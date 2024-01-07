@@ -3,7 +3,6 @@ package edu.estu;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.EnumMap;
 
 /**
  * BIM207 Project has 2 Parts, 50 points each.
@@ -25,7 +24,7 @@ public class App {
     /**
      * For a certain user input(s) the function/method enters an infinite loop.
      * This is an intentional bug, do not fix it.
-     * Instead, write a failing junit test case to demonstrate the bug.
+     * Instead, write a *failing* junit test case to demonstrate the bug.
      *
      * @param input a double value
      */
@@ -49,10 +48,10 @@ public class App {
      */
 
 
-    /* ****************
-     *** ALL TESTS MUST PASS IN THE END ***
-     ** WRITE YOUR 4 static void METHODS HERE: **
-     ****************
+    /* **********************************************
+     ******* ALL TESTS MUST PASS IN THE END *********
+     **** WRITE YOUR 4 static void METHODS HERE: ****
+     ************************************************
      */
 
     /**
@@ -63,17 +62,26 @@ public class App {
         map.merge(key, 1, Integer::sum);
     }
 
-    public static void incrementCountMapWildcard(Map<? extends Enum<?>, Integer> map, Enum<?> key) {
+    public static void incrementCountMapWildcard(Map<Enum<?>, Integer> map, Enum<?> key) {
         map.merge(key, 1, Integer::sum);
     }
 
-    public static <E extends Enum<E>> void incrementCountMapEnumDescG(Map<E, Integer> map, Enum.EnumDesc<E> key) {
+      /* Increment the count in a frequency map for EnumDesc keys using generics.
+            *
+            * @param map Frequency map with EnumDesc keys.
+            * @param key EnumDesc key.
+     */
+    public static <E extends Enum<E>> void incrementCountMapEnumDescG(Map<? super Enum.EnumDesc<E>, Integer> map, Enum.EnumDesc<E> key) {
         map.merge(key, 1, Integer::sum);
     }
 
-    public static void incrementCountMapEnumDescW(Map<? extends Enum.EnumDesc<?>, Integer> map, Enum.EnumDesc<?> key) {
+    /**
+     * Increment the count in a frequency map for EnumDesc keys using wildcards.
+     *
+     * @param map Frequency map with EnumDesc keys.
+     * @param key EnumDesc key.
+     */
+    public static void incrementCountMapEnumDescW(Map<Enum.EnumDesc<?>, Integer> map, Enum.EnumDesc<?> key) {
         map.merge(key, 1, Integer::sum);
     }
-
 }
-
