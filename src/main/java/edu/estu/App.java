@@ -58,11 +58,11 @@ public class App {
      * Hint: Map.merge() - One method to rule them all
      * https://nurkiewicz.com/2019/03/mapmerge-one-method-to-rule-them-all.html
      */
-    public static <E extends Enum<E>> void incrementCountMapGenerics(Map<E, Integer> map, E key) {
+    static <E extends Enum<E>> void incrementCountMapGenerics(Map<E, Integer> map, E key) {
         map.merge(key, 1, Integer::sum);
     }
 
-    public static void incrementCountMapWildcard(Map<Enum<?>, Integer> map, Enum<?> key) {
+    static void incrementCountMapWildcard(Map<Enum<?>, Integer> map, Enum<?> key) {
         map.merge(key, 1, Integer::sum);
     }
 
@@ -71,7 +71,7 @@ public class App {
             * @param map Frequency map with EnumDesc keys.
             * @param key EnumDesc key.
      */
-    public static <E extends Enum<E>> void incrementCountMapEnumDescG(Map<? super Enum.EnumDesc<E>, Integer> map, Enum.EnumDesc<E> key) {
+    static <E extends Enum<E>> void incrementCountMapEnumDescG(Map<? super Enum.EnumDesc<E>, Integer> map, Enum.EnumDesc<E> key) {
         map.merge(key, 1, Integer::sum);
     }
 
@@ -81,7 +81,7 @@ public class App {
      * @param map Frequency map with EnumDesc keys.
      * @param key EnumDesc key.
      */
-    public static void incrementCountMapEnumDescW(Map<Enum.EnumDesc<?>, Integer> map, Enum.EnumDesc<?> key) {
+    static void incrementCountMapEnumDescW(Map<Enum.EnumDesc<?>, Integer> map, Enum.EnumDesc<?> key) {
         map.merge(key, 1, Integer::sum);
     }
 }
